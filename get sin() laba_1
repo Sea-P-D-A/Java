@@ -1,0 +1,41 @@
+public class Main {
+    public static void main(String[] args) {
+
+        double result = getSinWithFor(1);
+        System.out.println("результат For\t\t\t" + result);
+        result = getSinWithWhile(1);
+        System.out.println("результат While\t\t\t" + result);
+        double result2 = Math.sin(1);
+        System.out.println("результат Math.sin()\t" + result2);
+    }
+
+    public static double getSinWithFor(double x) {
+        int loopCount = 500;
+        double numerator = x;
+        double result = 0;
+        result += numerator;
+
+        for (int k = 1; k < loopCount; k++) {
+            double newnumerator = numerator * ((-x * x) / ((2 * k) * (2 * k + 1)));
+            numerator = newnumerator;
+            result += numerator;
+        }
+        return result;
+    }
+
+    public static double getSinWithWhile(double x) {
+        int k = 1;
+        double result = 0;
+        double numerator = x;
+        result += numerator;
+        double precisino = 0.0001;
+
+        while (Math.abs(numerator) > precisino){
+            double newnumerator = numerator * ((-x * x) / ((2 * k) * (2 * k + 1)));
+            result += newnumerator;
+            numerator = newnumerator;
+            k++;
+        }
+        return result;
+    }
+}
